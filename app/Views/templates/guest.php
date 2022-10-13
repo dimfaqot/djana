@@ -127,7 +127,7 @@ $jenis = $con->jenis();
 
 
                 <div class="d-none d-md-block">
-                    <form class="d-flex" action="<?= base_url(); ?>" method="post">
+                    <form class="d-flex" action="<?= base_url(); ?>/home/auth" method="post">
                         <input name="username" class="form-control form-control-sm me-2" type="text" placeholder="Username">
                         <input name="password" class="form-control form-control-sm me-2" type="password" placeholder="Password">
                         <button class="btn btn-outline-info" type="submit">Login</button>
@@ -185,7 +185,7 @@ $jenis = $con->jenis();
             <?php endforeach; ?>
         </div>
 
-        <form class="p-2" method="post" action="<?= base_url(); ?>">
+        <form class="p-2" method="post" action="<?= base_url(); ?>/home/auth">
             <div class="mb-3">
                 <h6 class="form-label">Username</h6>
                 <input type="text" placeholder="Username" name="username" class="form-control form-control-sm">

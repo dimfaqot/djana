@@ -152,7 +152,7 @@ helper('form');
                     </form>
                     <?php if (session('role') == 'Bendahara') : ?>
                         <?php if ($data['uang_masuk'] > 0 && $data['progres'] !== 'Selesai') : ?>
-                            <form class="mt-3" method="POST" action="<?php base_url(); ?>/tugas/selesai">
+                            <form class="mt-3" method="POST" action="<?= base_url(); ?>/tugas/selesai">
                                 <input type="hidden" name="id" value="<?= $data['id']; ?>">
                                 <input type="hidden" name="progres" value="Selesai">
                                 <div class="d-grid gap-2">
@@ -163,7 +163,7 @@ helper('form');
                     <?php endif; ?>
 
                     <?php if (session('role') == 'Root') : ?>
-                        <form class="mt-3" method="POST" action="<?php base_url(); ?>/tugas/selesai">
+                        <form class="mt-3" method="POST" action="<?= base_url(); ?>/tugas/selesai">
                             <input type="hidden" name="id" value="<?= $data['id']; ?>">
                             <input type="hidden" name="progres" value="Selesai">
                             <div class="d-grid gap-2">
