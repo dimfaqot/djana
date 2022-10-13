@@ -26,12 +26,7 @@
                 <div>
                     Detail
                 </div>
-                <?php if (session('role') !== 'User' && session('role') !== 'Guest') : ?>
-                    <form action="<?= base_url(); ?>/produk/edit" method="POST">
-                        <input type="hidden" name="id" value="<?= $data['id']; ?>">
-                        <button style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" class="btn btn-sm btn-primary">Edit</button>
-                    <?php endif; ?>
-                    </form>
+
             </div>
             <hr>
             <p><?= $data['detail_produk']; ?></p>
