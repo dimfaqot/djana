@@ -13,7 +13,11 @@ $total = 0;
         <div class="card-body">
             <?php foreach ($data as $key => $i) : ?>
                 <?php
-                $total = $total + $i['jumlah'];
+                if ($i['uang_masuk'] <= 0) {
+                    $total = $total + $i['jumlah'];
+                } else {
+                    $total = $total + ($i['uang_masuk']);
+                }
                 ?>
                 <?php if ($key == 0) : ?>
                     <div class="d-flex justify-content-center">
@@ -55,12 +59,13 @@ $total = 0;
 
                         </div>
                         <div class="col-md-6">
-                            <div style="font-size:small"><span style="width:100px; display:inline-block">Petugas</span> : <?= $i['penerima_order']; ?></div>
+                            <div style="font-size:small"><span style="width:100px; display:inline-block">Petugas</span> : <?= ucfirst($i['penerima_order']); ?></div>
                             <div style="font-size:small"><span style="width:100px; display:inline-block">Pj</span> : <?= ucfirst($i['pj_order']); ?></div>
 
                         </div>
                     </div>
                     <hr>
+
                     <table class="table table-sm" style="font-size:small">
                         <thead>
                             <tr>
@@ -76,10 +81,10 @@ $total = 0;
                         <?php endif; ?>
                         <tr>
                             <td scope="row"><?= $key + 1; ?></td>
-                            <td><?= $i['produk']; ?></td>
+                            <td><a data-bs-toggle="popover" data-bs-content="<?= ($i['catatan'] == '' ? '-' : $i['catatan']); ?>"><?= $i['produk']; ?></a></td>
                             <td><?= $i['qty']; ?></td>
-                            <td>Rp <?= rupiah($i['harga']); ?></td>
-                            <td>Rp <?= rupiah($i['jumlah']); ?></td>
+                            <td>Rp <?= ($i['uang_masuk'] <= 0 ? rupiah($i['jumlah']) : rupiah(ceil($i['uang_masuk'] / $i['qty']))); ?></td>
+                            <td>Rp <?= ($i['uang_masuk'] <= 0 ? rupiah($i['harga']) : rupiah($i['uang_masuk'])); ?></td>
                             <td class="d-none d-md-table-cell"><?= $i['catatan']; ?></td>
                         </tr>
                         <?php if (($key + 1) == count($data)) : ?>

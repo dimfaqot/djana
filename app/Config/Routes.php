@@ -54,6 +54,7 @@ $routes->get('produk/detail/(:num)', 'Produk::detail/$1');
 $routes->post('produk/cariproduk', 'Produk::cariproduk');
 $routes->get('produk/search/(:any)', 'Produk::search/$1');
 $routes->post('produk/edit', 'Produk::edit');
+$routes->post('produk/copy', 'Produk::copy');
 $routes->get('produk/edit', 'Produk::index');
 $routes->post('produk/update', 'Produk::update');
 
@@ -78,6 +79,13 @@ $routes->get('transaksi/page/(:num)', 'Transaksi::page/$1');
 $routes->get('transaksi/nota/(:any)', 'Transaksi::nota/$1');
 $routes->get('transaksi/tunjukpj/(:any)', 'Transaksi::tunjukpj/$1');
 $routes->post('transaksi/tunjukpj', 'Transaksi::savetunjukpj');
+
+$routes->get('pengeluaran', 'Pengeluaran::index');
+$routes->get('pengeluaran/add', 'Pengeluaran::add');
+$routes->post('pengeluaran', 'Pengeluaran::save');
+$routes->post('pengeluaran/update', 'Pengeluaran::update');
+$routes->post('pengeluaran/edit', 'Pengeluaran::edit');
+$routes->get('pengeluaran/detail/(:num)', 'Pengeluaran::detail/$1');
 
 $routes->get('tugas', 'Tugas::index');
 $routes->get('tugas/page/(:num)', 'Tugas::page/$1');

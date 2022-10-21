@@ -5,11 +5,11 @@
 
 <?php
 helper('form');
-// dd($data);
+
 ?>
 
 <div class="container p-2" style="margin-top:70px;">
-    <?= form_open_multipart(base_url() . '/produk/update') ?>
+    <?= form_open_multipart(base_url() . '/produk/' . ($order == 'Edit' ? 'update' : '')) ?>
     <input type="hidden" name="id" value="<?= $data['id']; ?>">
     <div class="input-group input-group-sm mb-3">
         <label style="width:150px;" class="input-group-text">Jenis</label>

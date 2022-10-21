@@ -178,6 +178,29 @@ class Produk extends BaseController
         $data = [
             'judul' => 'Produk',
             'data' => $q,
+            'order' => 'Edit',
+            'jenis' => $con->jenis()
+        ];
+        return view('editproduk', $data);
+    }
+    public function copy()
+    {
+        $id = $this->request->getVar('id');
+        $mod = \App\Models\Produks::class;
+        $mod = new $mod;
+
+        $con = \App\Models\Configs::class;
+        $con = new $con;
+
+        $q = $mod->where('id', $id)->first();
+        if (!$q) {
+            return redirect()->to(base_url('produk'));
+        }
+
+        $data = [
+            'judul' => 'Produk',
+            'order' => 'Copy',
+            'data' => $q,
             'jenis' => $con->jenis()
         ];
         return view('editproduk', $data);

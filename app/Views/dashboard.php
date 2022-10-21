@@ -4,11 +4,15 @@
 
 <?php
 helper('functions');
-// dd($transaksi);
+// dd($data);
 ?>
 
 <!-- DETAIL -->
 <div class="container" style="margin-bottom: 20px;">
+    <?php if (count($data) <= 0) : ?>
+        <h6 class="text-center mb-3">Belum ada transaksi. <a href="<?= base_url(); ?>/produk">Belanja</a></h6>
+        <?php die; ?>
+    <?php endif; ?>
     <h1 class="text-center mb-3">TRANSAKSI</h1>
     <div class="mb-3 row">
         <label class="col-2 col-md-1 col-form-label">Tahun</label>
@@ -117,7 +121,7 @@ helper('functions');
                                 <th scope="col">#</th>
                                 <th scope="col">Tgl</th>
                                 <th scope="col">Tugas</th>
-                                <th scope="col">Progres</th>
+                                <th scope="col">Progress</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -139,7 +143,12 @@ helper('functions');
     <h1 class="text-center mb-3">ANAK PALING ALAY</h1>
     <div class="card">
         <div class="card-body text-center">
-            <h3><?= alay()['nama']; ?>. Keterlibatan hanya <?= alay()['keterlibatan']; ?> kali!</h3>
+            <?php if (alay()['nama'] == 'Dim') : ?>
+                <h3>-</h3>
+            <?php else : ?>
+                <h3><?= alay()['nama']; ?>. Keterlibatan hanya <?= alay()['keterlibatan']; ?> kali!</h3>
+
+            <?php endif; ?>
         </div>
     </div>
 </div>

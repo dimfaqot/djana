@@ -1,6 +1,7 @@
 <?php
 helper('functions');
 // dd(notif('unread'));
+// dd(menu());
 ?>
 <!doctype html>
 <html lang="en">
@@ -591,6 +592,11 @@ helper('functions');
                 })
 
         });
+
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
     </script>
 </body>
 

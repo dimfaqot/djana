@@ -26,7 +26,6 @@ class Dashboard extends BaseController
 
         $where = ['Selesai'];
         $q = $transaksi->where('username', session('username'))->whereNotIn('progres', $where)->find();
-
         $data = [
             'judul' => 'Home',
             'data' => $q,
@@ -34,6 +33,7 @@ class Dashboard extends BaseController
             'bulan' => $con->bulans(),
             'progres' => $con->progres()
         ];
+        // dd($data);
         return view('dashboard', $data);
     }
 

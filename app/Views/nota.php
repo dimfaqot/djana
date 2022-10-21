@@ -76,17 +76,24 @@ helper('functions');
         $total = 0;
         ?>
         <?php foreach ($data as $key => $i) : ?>
+            <?php
+            if ($i['uang_masuk'] <= 0) {
+                $total = $total + $i['jumlah'];
+            } else {
+                $total = $total + ($i['uang_masuk']);
+            }
+            ?>
             <tr>
                 <td style="text-align:center"><?= $key + 1; ?></td>
                 <td><?= $i['produk']; ?></td>
-                <td>Rp <?= rupiah($i['harga']); ?></td>
+                <td>Rp <?= ($i['uang_masuk'] <= 0 ? rupiah($i['jumlah']) : rupiah(ceil($i['uang_masuk'] / $i['qty']))); ?></td>
                 <td style="text-align:center"><?= $i['qty']; ?></td>
-                <td>Rp <?= rupiah($i['jumlah']); ?></td>
+                <td>Rp <?= ($i['uang_masuk'] <= 0 ? rupiah($i['harga']) : rupiah($i['uang_masuk'])); ?></td>
             </tr>
         <?php endforeach; ?>
         <tr>
             <td style="font-weight: bold" colspan="4">Total</td>
-            <td>Rp <?= rupiah($i['jumlah']); ?></td>
+            <td>Rp <?= rupiah($total); ?></td>
 
         </tr>
     </table>

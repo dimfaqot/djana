@@ -33,8 +33,12 @@ helper('functions');
                     <form action="<?= base_url(); ?>/produk/edit" method="POST">
                         <input type="hidden" name="id" value="<?= $data['id']; ?>">
                         <button style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" class="btn btn-sm btn-primary">Edit</button>
-                    <?php endif; ?>
                     </form>
+                    <form action="<?= base_url(); ?>/produk/copy" method="POST">
+                        <input type="hidden" name="id" value="<?= $data['id']; ?>">
+                        <button style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" class="btn btn-sm btn-primary">Copy</button>
+                    </form>
+                <?php endif; ?>
             </div>
             <hr>
             <p><?= $data['detail_produk']; ?></p>
